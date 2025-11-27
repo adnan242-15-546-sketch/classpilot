@@ -98,7 +98,7 @@ public class LoginController {
 
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
-            Scene scene = new Scene(loader.load()); // নতুন সিন লোড করা
+            Scene scene = new Scene(loader.load()); 
 
 
             Stage dashboardStage = new Stage();
