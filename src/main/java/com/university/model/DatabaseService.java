@@ -9,7 +9,7 @@ public class DatabaseService {
     private ArrayList<User> userList;
 
 
-    private static final String FILE_NAME = "users.dat"; // .dat বা .ser দিতে পারো
+    private static final String FILE_NAME = "users.dat"; 
 
     // Constructor
     public DatabaseService() {
@@ -31,7 +31,7 @@ public class DatabaseService {
 
     private void saveData() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_NAME))) {
-            oos.writeObject(userList); // পুরো ইউজার লিস্টটা ফাইলে লিখে দিলাম
+            oos.writeObject(userList); 
             System.out.println("Data saved successfully!");
         } catch (IOException e) {
             System.err.println("Error saving data: " + e.getMessage());
