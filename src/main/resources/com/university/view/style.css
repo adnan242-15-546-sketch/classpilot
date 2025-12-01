@@ -1,0 +1,171 @@
+/* style.css - Finalized Modern Design for ClassPilot (V2: Deep Shadows & Animation) */
+
+/* ==================================================================== */
+/* 1. GLOBAL TYPOGRAPHY & ROOT BACKGROUND (Enhanced)                  */
+/* ==================================================================== */
+.root {
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    /* Soft, calm background gradient */
+    -fx-background-color: linear-gradient(to bottom right, #f2f7fb, #e0e6ed);
+    -fx-font-size: 14px;
+    -fx-accent: #1565c0; /* Global accent color for selection, etc. */
+}
+
+/* ==================================================================== */
+/* 2. LOGIN CARD (The Elevated Container with Deep Shadow)            */
+/* ==================================================================== */
+.login-card {
+    -fx-background-color: #ffffff; /* White card */
+    -fx-background-radius: 20px; /* Highly rounded corners */
+    /* Deeper, more noticeable shadow for 3D effect */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 40, 0, 0, 20);
+    -fx-padding: 40px;
+    -fx-max-width: 350px;
+    /* Smooth transition for any internal styling change */
+    -fx-transition: all 0.3s ease-out;
+}
+
+.login-header {
+    -fx-font-size: 30px; /* Bigger header */
+    -fx-font-weight: 700;
+    -fx-text-fill: #1565c0;
+    -fx-padding: 0 0 20px 0;
+}
+
+/* ==================================================================== */
+/* 3. INPUT FIELDS & TEXT AREAS (With Focus Glow)                     */
+/* ==================================================================== */
+.text-input, .choice-box, .text-area {
+    -fx-pref-height: 48px; /* Taller input fields */
+    -fx-border-color: #e8e8e8; /* Very light border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px; /* Smoother rounded corners */
+    -fx-background-radius: 10px;
+    -fx-background-color: #ffffff; /* White background */
+    -fx-font-size: 15px;
+    -fx-padding: 0 15px;
+    -fx-transition: -fx-border-color 0.3s, -fx-effect 0.3s; /* Smooth transition for focus */
+}
+
+/* Focus Effect: Border and subtle glow */
+.text-input:focused, .choice-box:focused, .text-area:focused {
+    -fx-border-color: #1a73e8; /* Brighter Blue focus */
+    -fx-border-width: 2px;
+    -fx-effect: innershadow(gaussian, rgba(26, 115, 232, 0.5), 10, 0, 0, 0); /* Inner glow effect */
+}
+
+/* ==================================================================== */
+/* 4. BUTTONS (Interactive Lift and Press Effects)                    */
+/* ==================================================================== */
+.button {
+    -fx-background-color: linear-gradient(to bottom, #1a73e8, #1565c0); /* Deep Blue Gradient */
+    -fx-text-fill: white;
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
+    -fx-background-radius: 10px; /* Smoother rounding */
+    -fx-cursor: hand;
+    -fx-pref-width: 280px;
+    -fx-padding: 12px 25px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
+    -fx-transition: -fx-scale 0.2s ease-out, -fx-effect 0.2s; /* Transition added for animation */
+}
+
+/* Hover: Button slightly lifts and shadow deepens */
+.button:hover {
+    -fx-background-color: linear-gradient(to bottom, #1565c0, #1a73e8); /* Inverted gradient on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 15, 0, 0, 5); /* Deeper shadow on hover */
+    -fx-scale-y: 1.05; /* Lift Effect */
+    -fx-scale-x: 1.01;
+}
+
+/* Press: Button visually sinks */
+.button:pressed {
+    -fx-scale-y: 0.98;
+    -fx-scale-x: 0.99;
+    -fx-effect: none;
+}
+
+.error-label {
+    -fx-text-fill: #d32f2f; /* Deeper red */
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+}
+
+
+/* ==================================================================== */
+/* 5. TABLE VIEW & LIST VIEW (Clean Data Presentation)                */
+/* ==================================================================== */
+.table-view, .list-view {
+    -fx-background-color: #ffffff; /* White background for data container */
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2); /* Very soft panel shadow */
+}
+
+/* Table Header */
+.table-view .column-header-background {
+    -fx-background-color: #1565c0;
+    -fx-background-radius: 12px 12px 0 0; /* Rounded top corners */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+/* Table Rows */
+.table-row-cell:odd {
+    -fx-background-color: #f8f9fa; /* Off-white alternate row */
+}
+
+.table-row-cell:hover {
+    -fx-background-color: #e3f2fd; /* Light blue on hover for better interaction */
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #a5c3e8; /* Solid selection color */
+    -fx-text-fill: #0d47a1;
+}
+
+/* ==================================================================== */
+/* 6. TAB PANE (Modern, Underlined Tab Look)                          */
+/* ==================================================================== */
+.tab-pane {
+    -fx-tab-min-width: 130px;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+}
+
+.tab-pane .tab {
+    -fx-background-color: transparent; /* Tabs blend into background */
+    -fx-background-insets: 0;
+    -fx-padding: 10px 15px;
+}
+
+.tab-pane .tab-content {
+    -fx-background-color: white; /* Content area is white */
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+    -fx-background-radius: 12px;
+    -fx-border-radius: 12px;
+    -fx-padding: 15px;
+}
+
+.tab-pane .tab:selected {
+    -fx-border-color: transparent;
+    /* Selected tab gets a strong blue bottom border */
+    -fx-border-width: 0 0 3px 0;
+    -fx-border-insets: 0;
+    -fx-border-color: #1565c0;
+    -fx-background-color: transparent;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #1565c0; /* Primary color for selected tab text */
+    -fx-font-weight: bold;
+}

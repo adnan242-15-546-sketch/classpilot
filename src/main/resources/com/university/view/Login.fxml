@@ -6,20 +6,37 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="10.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.controller.LoginController">
-   <children>
-      <ImageView fitHeight="93.0" fitWidth="128.0" pickOnBounds="true" preserveRatio="true" />
-      <Label lineSpacing="10.0" prefHeight="18.0" prefWidth="142.0" text="Welcome to ClassPilot" />
-      <TextField fx:id="userIdField" promptText="User ID" />
-      <PasswordField fx:id="passwordField" promptText="Password" />
-      <ChoiceBox fx:id="roleSelector" prefWidth="150.0" />
-      <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginButtonClick" prefWidth="100.0" text="Login" />
-      <Label fx:id="errorLabel" alignment="CENTER" prefHeight="18.0" prefWidth="283.0" text="Label" textFill="#ff5a5a" />
-   </children>
-   <padding>
-      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-   </padding>
-</VBox>
+<AnchorPane prefHeight="480.0" prefWidth="700.0" styleClass="root-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.controller.LoginController">
+    <children>
+        <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="login-card" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="50.0">
+            <children>
+                <VBox alignment="CENTER" spacing="5.0">
+                    <children>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@C__3_-removebg-preview.png" />
+                            </image>
+                        </ImageView>
+                        <Label styleClass="login-header" text="ClassPilot Login" />
+                    </children>
+                    <padding>
+                        <Insets bottom="15.0" />
+                    </padding>
+                </VBox>
+                <TextField fx:id="userIdField" promptText="User ID" styleClass="text-input" />
+                <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-input" />
+                <ChoiceBox fx:id="roleSelector" prefWidth="250.0" styleClass="text-input" />
+                <Label fx:id="errorLabel" alignment="CENTER" prefWidth="283.0" styleClass="error-label" textFill="#ff5a5a" />
+                <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginButtonClick" text="LOGIN" />
+            </children>
+            <padding>
+                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>
