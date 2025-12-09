@@ -19,12 +19,18 @@ import java.io.IOException;
 
 public class LoginController {
 
+    // ==========================
+    // FXML COMPONENTS
+    // ==========================
     @FXML private TextField userIdField;
     @FXML private PasswordField passwordField;
     @FXML private ChoiceBox<String> roleSelector;
     @FXML private Button loginButton;
     @FXML private Label errorLabel;
 
+    // ==========================
+    // DATA & SERVICES
+    // ==========================
     private DatabaseService databaseService = new DatabaseService();
 
     @FXML
@@ -33,7 +39,7 @@ public class LoginController {
         roleSelector.getItems().addAll("Student", "Teacher", "Admin");
         roleSelector.setValue("Admin");
 
-        // Create a default admin if the database is empty
+        // Create a default admin if the database is empty (First-time setup)
         if (databaseService.getUserList().isEmpty()) {
             Admin defaultAdmin = new Admin("admin", "123", "Default Admin");
             databaseService.addUser(defaultAdmin);
@@ -76,84 +82,55 @@ public class LoginController {
         return null;
     }
 
-    // Method to handle dashboard navigation based on user role
+    // Method to handle dashboard navigation (Seamless Transition)
     private void openDashboard(User user) {
         try {
             String fxmlFile = null;
             String title = null;
 
-            FXMLLoader loader = null;
-            Stage dashboardStage = new Stage();
-
-            // Determine FXML file based on role
+            // Determine FXML file and Title based on role
             if (user.getRole().equals("Admin")) {
                 fxmlFile = "/com/university/view/AdminDashboard.fxml";
-                title = "Admin Dashboard";
-
+                title = "ClassPilot - Admin Dashboard";
             } else if (user.getRole().equals("Student")) {
                 fxmlFile = "/com/university/view/StudentDashboard.fxml";
-                title = "Student Dashboard";
-
-                loader = new FXMLLoader(getClass().getResource(fxmlFile));
-                Scene scene = new Scene(loader.load());
-
-                // Pass student data to the controller
-                StudentDashboardController controller = loader.getController();
-                controller.initData((Student) user);
-
-                dashboardStage.setTitle(title);
-                dashboardStage.setScene(scene);
-                dashboardStage.show();
-
-                // Close login window
-                closeLoginWindow();
-                return;
-
+                title = "ClassPilot - Student Dashboard";
             } else if (user.getRole().equals("Teacher")) {
                 fxmlFile = "/com/university/view/TeacherDashboard.fxml";
-                title = "Teacher Dashboard";
+                title = "ClassPilot - Teacher Dashboard";
+            }
 
-                loader = new FXMLLoader(getClass().getResource(fxmlFile));
-                Scene scene = new Scene(loader.load());
+            if (fxmlFile == null) return;
 
-                // Pass teacher data to the controller
+            // 1. Get current stage and dimensions to maintain window size
+            Stage currentStage = (Stage) loginButton.getScene().getWindow();
+            double currentWidth = currentStage.getScene().getWidth();
+            double currentHeight = currentStage.getScene().getHeight();
+
+            // 2. Load FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxmlFile));
+
+            // 3. Create new Scene with the previous dimensions (Seamless feel)
+            Scene scene = new Scene(loader.load(), currentWidth, currentHeight);
+
+            // 4. Pass user data to the specific controller
+            if (user.getRole().equals("Student")) {
+                StudentDashboardController controller = loader.getController();
+                controller.initData((Student) user);
+            } else if (user.getRole().equals("Teacher")) {
                 TeacherDashboardController controller = loader.getController();
                 controller.initData((Teacher) user);
-
-                dashboardStage.setTitle(title);
-                dashboardStage.setScene(scene);
-                dashboardStage.show();
-
-                // Close login window
-                closeLoginWindow();
-                return;
             }
 
-            // Fallback loading logic for Admin (since it didn't return early)
-            if(fxmlFile != null){
-                loader = new FXMLLoader(getClass().getResource(fxmlFile));
-                Scene scene = new Scene(loader.load());
+            // 5. Set the new scene to the current stage
+            currentStage.setTitle(title);
+            currentStage.setScene(scene);
 
-                dashboardStage.setTitle(title);
-                dashboardStage.setScene(scene);
-                dashboardStage.show();
-
-                // Close login window
-                closeLoginWindow();
-            }
+            // Note: centerOnScreen() is removed to prevent the window from jumping.
 
         } catch (IOException e) {
             e.printStackTrace();
-            errorLabel.setText("Failed to open dashboard. (Check console)");
-        } catch (ClassCastException e) {
-            e.printStackTrace();
-            errorLabel.setText("System Error: User type mismatch.");
+            errorLabel.setText("Failed to load dashboard.");
         }
-    }
-
-    // Helper method to close the current login stage
-    private void closeLoginWindow() {
-        Stage loginStage = (Stage) loginButton.getScene().getWindow();
-        loginStage.close();
     }
 }

@@ -5,25 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3c17d11e-2b97-4319-b340-045dfe198a01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/controller/StudentDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/controller/TeacherDashboardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/model/Course.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/model/RoutineSlot.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/server/ChatServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/StudentDashboard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/TeacherDashboard.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/model/Notice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/university/view/classpilot.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routines.dat" beforeDir="false" afterPath="$PROJECT_DIR$/routines.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/university/VMSApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/VMSApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/university/controller/AdminDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/controller/AdminDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/university/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/university/controller/StudentDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/controller/StudentDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/university/controller/TeacherDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/controller/TeacherDashboardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/university/model/DatabaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/model/DatabaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/university/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/university/model/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/university/view/AdminDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/AdminDashboard.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/university/view/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/Login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users.dat" beforeDir="false" afterPath="$PROJECT_DIR$/users.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/university/view/StudentDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/StudentDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/university/view/TeacherDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/TeacherDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/university/view/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/university/view/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +70,13 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -98,6 +103,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/IdeaProjects/classpilot/src/main/java/com/university/view&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -111,6 +117,14 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\IdeaProjects\classpilot\src\main\java\com\university\view" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\IdeaProjects\classpilot\src\main\java\com\university\view" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.classpilot [run]">
     <configuration name="ChatServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.university.server.ChatServer" />
@@ -215,6 +229,14 @@
       <workItem from="1764275084296" duration="9715000" />
       <workItem from="1764605203256" duration="1957000" />
       <workItem from="1764607207417" duration="83000" />
+      <workItem from="1764834724838" duration="646000" />
+      <workItem from="1764880304015" duration="1863000" />
+      <workItem from="1764882488546" duration="7762000" />
+      <workItem from="1764932522036" duration="2470000" />
+      <workItem from="1764935031008" duration="5790000" />
+      <workItem from="1764949161388" duration="1705000" />
+      <workItem from="1765214727141" duration="2367000" />
+      <workItem from="1765293210045" duration="1504000" />
     </task>
     <servers />
   </component>

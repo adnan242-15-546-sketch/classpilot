@@ -8,35 +8,71 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="480.0" prefWidth="700.0" styleClass="root-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.controller.LoginController">
+<HBox prefHeight="600.0" prefWidth="900.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.controller.LoginController">
     <children>
-        <VBox alignment="TOP_CENTER" spacing="15.0" styleClass="login-card" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="225.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="50.0">
+
+        <VBox alignment="CENTER" prefWidth="400.0" styleClass="login-sidebar" HBox.hgrow="NEVER">
             <children>
-                <VBox alignment="CENTER" spacing="5.0">
-                    <children>
-                        <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@C__3_-removebg-preview.png" />
-                            </image>
-                        </ImageView>
-                        <Label styleClass="login-header" text="ClassPilot Login" />
-                    </children>
-                    <padding>
-                        <Insets bottom="15.0" />
-                    </padding>
-                </VBox>
-                <TextField fx:id="userIdField" promptText="User ID" styleClass="text-input" />
-                <PasswordField fx:id="passwordField" promptText="Password" styleClass="text-input" />
-                <ChoiceBox fx:id="roleSelector" prefWidth="250.0" styleClass="text-input" />
-                <Label fx:id="errorLabel" alignment="CENTER" prefWidth="283.0" styleClass="error-label" textFill="#ff5a5a" />
-                <Button fx:id="loginButton" mnemonicParsing="false" onAction="#onLoginButtonClick" text="LOGIN" />
+
+                <ImageView fitHeight="240.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@classpilot.png" />
+                    </image>
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                </ImageView>
+
+                <Label styleClass="brand-title" text="ClassPilot" />
+                <Label styleClass="brand-slogan" text="Classroom on your hand." />
             </children>
             <padding>
-                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
             </padding>
         </VBox>
+
+        <VBox alignment="CENTER" style="-fx-background-color: white;" HBox.hgrow="ALWAYS">
+            <children>
+                <VBox maxWidth="350.0" spacing="20.0">
+                    <children>
+                        <VBox spacing="5.0">
+                            <children>
+                                <Label styleClass="login-heading" text="Welcome Back!" />
+                                <Label styleClass="login-subheading" text="Please enter your details to sign in." />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="15.0">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <Label styleClass="field-label" text="User ID" />
+                                    <TextField fx:id="userIdField" promptText="Enter your ID" styleClass="text-input" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label styleClass="field-label" text="Password" />
+                                    <PasswordField fx:id="passwordField" promptText="Enter your password" styleClass="text-input" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label styleClass="field-label" text="Select Role" />
+                                    <ChoiceBox fx:id="roleSelector" maxWidth="1.7976931348623157E308" styleClass="choice-box" />
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <Button fx:id="loginButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLoginButtonClick" styleClass="login-btn" text="Sign In" />
+
+                        <Label fx:id="errorLabel" alignment="CENTER" maxWidth="1.7976931348623157E308" styleClass="error-label" wrapText="true" />
+                    </children>
+                </VBox>
+            </children>
+        </VBox>
+
     </children>
-</AnchorPane>
+</HBox>

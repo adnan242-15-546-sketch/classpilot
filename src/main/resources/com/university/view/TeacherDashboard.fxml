@@ -2,75 +2,186 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="650.0" prefWidth="900.0" styleClass="root-background" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.controller.TeacherDashboardController">
+<AnchorPane prefHeight="700.0" prefWidth="1000.0" styleClass="root" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.university.controller.TeacherDashboardController">
     <children>
-        <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="630.0" prefWidth="880.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-            <top>
-                <BorderPane BorderPane.alignment="CENTER">
-                    <left>
-                        <Label styleClass="login-header" text="ClassPilot - Teacher Dashboard" BorderPane.alignment="CENTER">
+        <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+            <left>
+                <VBox prefWidth="240.0" spacing="10.0" styleClass="sidebar" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: -color-accent-emphasis;" text="ClassPilot">
+                            <graphic>
+                                <FontIcon iconLiteral="fth-layers" iconSize="24" iconColor="#5e81ac"/>
+                            </graphic>
                             <padding>
-                                <Insets bottom="15.0" left="15.0" top="15.0" />
+                                <Insets bottom="20.0" left="10.0" top="10.0" />
                             </padding>
                         </Label>
-                    </left>
-                    <right>
-                        <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="button" text="Logout">
-                            <BorderPane.margin>
-                                <Insets right="15.0" top="10.0" />
-                            </BorderPane.margin>
+
+                        <Separator />
+
+                        <Label style="-fx-font-size: 11px; -fx-text-fill: gray;" text="TEACHER MENU">
+                            <VBox.margin>
+                                <Insets left="15.0" />
+                            </VBox.margin>
+                        </Label>
+
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTabRoutine" styleClass="sidebar-btn" text="My Routine">
+                            <graphic>
+                                <FontIcon iconLiteral="fth-calendar" iconSize="18" />
+                            </graphic>
                         </Button>
-                    </right>
-                </BorderPane>
-            </top>
+
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTabChat" styleClass="sidebar-btn" text="Course Chat">
+                            <graphic>
+                                <FontIcon iconLiteral="fth-message-circle" iconSize="18" />
+                            </graphic>
+                        </Button>
+
+                        <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#switchTabNotice" styleClass="sidebar-btn" text="Notice Board">
+                            <graphic>
+                                <FontIcon iconLiteral="fth-bell" iconSize="18" />
+                            </graphic>
+                        </Button>
+
+                        <Region VBox.vgrow="ALWAYS" />
+                        <Separator />
+
+                        <Button fx:id="logoutButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onLogoutButtonClick" styleClass="sidebar-btn, logout-btn" text="Logout">
+                            <graphic>
+                                <FontIcon iconLiteral="fth-log-out" iconSize="18" />
+                            </graphic>
+                        </Button>
+                    </children>
+                    <padding>
+                        <Insets bottom="20.0" left="15.0" right="15.0" top="20.0" />
+                    </padding>
+                </VBox>
+            </left>
+
             <center>
-                <TabPane styleClass="tab-pane" BorderPane.alignment="CENTER" tabClosingPolicy="UNAVAILABLE">
+                <TabPane fx:id="mainTabPane" styleClass="hidden-tabs" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                     <tabs>
-                        <Tab text="My Teaching Routine">
-                            <content>
-                                <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                    <children>
-                                        <TableView fx:id="teacherRoutineTable" styleClass="table-view" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columns>
-                                                <TableColumn fx:id="dayCol" text="Day" />
-                                                <TableColumn fx:id="timeCol" text="Time" />
-                                                <TableColumn fx:id="subjectCol" text="Subject &amp; Course" />
-                                                <TableColumn fx:id="roomCol" text="Room" />
-                                            </columns>
-                                        </TableView>
-                                    </children>
-                                </AnchorPane>
-                            </content>
-                        </Tab>
-                        <Tab text="Course Chat">
+
+                        <Tab text="Routine">
                             <content>
                                 <AnchorPane>
                                     <children>
-                                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <VBox spacing="15.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <padding>
+                                                <Insets bottom="20.0" left="30.0" right="30.0" top="30.0" />
+                                            </padding>
                                             <children>
-                                                <ComboBox fx:id="chatCourseSelector" maxWidth="1.7976931348623157E308" prefHeight="45.0" promptText="Select Class Group" styleClass="choice-box" />
-
-                                                <TextArea fx:id="chatArea" prefHeight="450.0" styleClass="text-area" VBox.vgrow="ALWAYS" />
-                                                <TextField fx:id="messageField" prefHeight="48.0" styleClass="text-input" />
-                                                <Button fx:id="sendButton" mnemonicParsing="false" onAction="#onSendButtonClick" prefWidth="9999.0" styleClass="button" text="Send Message" />
+                                                <HBox alignment="CENTER_LEFT" spacing="20.0">
+                                                    <children>
+                                                        <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="My Teaching Schedule" />
+                                                        <Region HBox.hgrow="ALWAYS" />
+                                                        <CheckBox fx:id="todayOnlyCheckBox" mnemonicParsing="false" style="-fx-font-size: 14px; -fx-cursor: hand;" text="Show Today Only" />
+                                                    </children>
+                                                </HBox>
+                                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <FlowPane fx:id="teacherRoutineContainer" hgap="20.0" vgap="20.0" />
+                                                    </content>
+                                                </ScrollPane>
                                             </children>
                                         </VBox>
                                     </children>
                                 </AnchorPane>
                             </content>
                         </Tab>
+
+                        <Tab text="Chat">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <padding>
+                                                <Insets bottom="20.0" left="30.0" right="30.0" top="30.0" />
+                                            </padding>
+                                            <children>
+                                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Classroom Chat" />
+                                                <ComboBox fx:id="chatCourseSelector" maxWidth="300.0" prefHeight="40.0" promptText="Select Class Group" />
+                                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background: transparent; -fx-background-color: transparent;" VBox.vgrow="ALWAYS">
+                                                    <content>
+                                                        <VBox fx:id="chatContainer" spacing="10.0" styleClass="chat-container" />
+                                                    </content>
+                                                </ScrollPane>
+                                                <TextField fx:id="messageField" prefHeight="45.0" promptText="Type a message..." />
+                                                <Button fx:id="sendButton" mnemonicParsing="false" onAction="#onSendButtonClick" text="Send Message" />
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+
+                        <Tab text="Notices">
+                            <content>
+                                <AnchorPane>
+                                    <children>
+                                        <SplitPane dividerPositions="0.4" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                            <items>
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox spacing="15.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="30.0">
+                                                            <children>
+                                                                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Post New Notice" />
+                                                                <Label text="Select Target Section:" textFill="#666666" />
+                                                                <ComboBox fx:id="noticeTargetSelector" maxWidth="1.7976931348623157E308" promptText="Choose Section..." styleClass="choice-box"/>
+                                                                <TextField fx:id="noticeTitleField" promptText="Notice Title (e.g. Class Cancelled)" styleClass="text-input"/>
+                                                                <TextArea fx:id="noticeContentArea" prefHeight="150.0" promptText="Write your notice details here..." styleClass="text-area" wrapText="true" />
+                                                                <Button mnemonicParsing="false" onAction="#onPostNoticeClick" styleClass="button" text="Post Notice" maxWidth="1.7976931348623157E308"/>
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+
+                                                <AnchorPane>
+                                                    <children>
+                                                        <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                            <padding>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </padding>
+                                                            <children>
+                                                                <Label style="-fx-font-weight: bold; -fx-font-size: 16px;" text="My Sent Notices" />
+
+                                                                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+                                                                    <content>
+                                                                        <VBox fx:id="sentNoticeContainer" spacing="15.0" style="-fx-padding: 10;">
+                                                                        </VBox>
+                                                                    </content>
+                                                                </ScrollPane>
+
+                                                            </children>
+                                                        </VBox>
+                                                    </children>
+                                                </AnchorPane>
+                                            </items>
+                                        </SplitPane>
+                                    </children>
+                                </AnchorPane>
+                            </content>
+                        </Tab>
+
                     </tabs>
                 </TabPane>
             </center>

@@ -1,171 +1,284 @@
-/* style.css - Finalized Modern Design for ClassPilot (V2: Deep Shadows & Animation) */
+/* ==================================================================== */
+/* CLASS PILOT - MAIN STYLESHEET                                      */
+/* Theme: Nord Light (Using AtlantaFX Base)                           */
+/* ==================================================================== */
 
-/* ==================================================================== */
-/* 1. GLOBAL TYPOGRAPHY & ROOT BACKGROUND (Enhanced)                  */
-/* ==================================================================== */
-.root {
-    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    /* Soft, calm background gradient */
-    -fx-background-color: linear-gradient(to bottom right, #f2f7fb, #e0e6ed);
+/* -------------------------------------------------------------------- */
+/* 1. SIDEBAR NAVIGATION                                              */
+/* -------------------------------------------------------------------- */
+
+/* Main Sidebar Container */
+.sidebar {
+    -fx-background-color: -color-bg-subtle; /* Matches Nord Light subtle bg */
+    -fx-border-color: transparent -color-border-muted transparent transparent;
+    -fx-border-width: 1px;
+}
+
+/* Sidebar Navigation Buttons */
+.sidebar-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: -color-fg-default;
+    -fx-alignment: CENTER_LEFT;
     -fx-font-size: 14px;
-    -fx-accent: #1565c0; /* Global accent color for selection, etc. */
-}
-
-/* ==================================================================== */
-/* 2. LOGIN CARD (The Elevated Container with Deep Shadow)            */
-/* ==================================================================== */
-.login-card {
-    -fx-background-color: #ffffff; /* White card */
-    -fx-background-radius: 20px; /* Highly rounded corners */
-    /* Deeper, more noticeable shadow for 3D effect */
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 40, 0, 0, 20);
-    -fx-padding: 40px;
-    -fx-max-width: 350px;
-    /* Smooth transition for any internal styling change */
-    -fx-transition: all 0.3s ease-out;
-}
-
-.login-header {
-    -fx-font-size: 30px; /* Bigger header */
-    -fx-font-weight: 700;
-    -fx-text-fill: #1565c0;
-    -fx-padding: 0 0 20px 0;
-}
-
-/* ==================================================================== */
-/* 3. INPUT FIELDS & TEXT AREAS (With Focus Glow)                     */
-/* ==================================================================== */
-.text-input, .choice-box, .text-area {
-    -fx-pref-height: 48px; /* Taller input fields */
-    -fx-border-color: #e8e8e8; /* Very light border */
-    -fx-border-width: 1px;
-    -fx-border-radius: 10px; /* Smoother rounded corners */
-    -fx-background-radius: 10px;
-    -fx-background-color: #ffffff; /* White background */
-    -fx-font-size: 15px;
-    -fx-padding: 0 15px;
-    -fx-transition: -fx-border-color 0.3s, -fx-effect 0.3s; /* Smooth transition for focus */
-}
-
-/* Focus Effect: Border and subtle glow */
-.text-input:focused, .choice-box:focused, .text-area:focused {
-    -fx-border-color: #1a73e8; /* Brighter Blue focus */
-    -fx-border-width: 2px;
-    -fx-effect: innershadow(gaussian, rgba(26, 115, 232, 0.5), 10, 0, 0, 0); /* Inner glow effect */
-}
-
-/* ==================================================================== */
-/* 4. BUTTONS (Interactive Lift and Press Effects)                    */
-/* ==================================================================== */
-.button {
-    -fx-background-color: linear-gradient(to bottom, #1a73e8, #1565c0); /* Deep Blue Gradient */
-    -fx-text-fill: white;
-    -fx-font-weight: 700;
-    -fx-font-size: 16px;
-    -fx-background-radius: 10px; /* Smoother rounding */
+    -fx-font-weight: bold;
     -fx-cursor: hand;
-    -fx-pref-width: 280px;
-    -fx-padding: 12px 25px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 8, 0, 0, 2);
-    -fx-transition: -fx-scale 0.2s ease-out, -fx-effect 0.2s; /* Transition added for animation */
+    -fx-padding: 12px 20px;
+    -fx-background-radius: 8px;
+    -fx-transition: all 0.2s ease-in-out;
 }
 
-/* Hover: Button slightly lifts and shadow deepens */
-.button:hover {
-    -fx-background-color: linear-gradient(to bottom, #1565c0, #1a73e8); /* Inverted gradient on hover */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 15, 0, 0, 5); /* Deeper shadow on hover */
-    -fx-scale-y: 1.05; /* Lift Effect */
-    -fx-scale-x: 1.01;
+.sidebar-btn:hover {
+    -fx-background-color: -color-bg-default;
+    -fx-text-fill: -color-accent-emphasis; /* Highlight color on hover */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 5, 0, 0, 1);
 }
 
-/* Press: Button visually sinks */
-.button:pressed {
-    -fx-scale-y: 0.98;
-    -fx-scale-x: 0.99;
-    -fx-effect: none;
+/* Logout Button (Special Styling) */
+.logout-btn {
+    -fx-text-fill: -color-danger-fg; /* Red text for danger action */
 }
 
-.error-label {
-    -fx-text-fill: #d32f2f; /* Deeper red */
+.logout-btn:hover {
+    -fx-background-color: -color-danger-subtle;
+    -fx-text-fill: -color-danger-fg;
+}
+
+/* -------------------------------------------------------------------- */
+/* 2. LAYOUT UTILITIES                                                */
+/* -------------------------------------------------------------------- */
+
+/* Hide default TabPane headers (since we use Sidebar for navigation) */
+.hidden-tabs .tab-header-area {
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
+    -fx-opacity: 0;
+    -fx-padding: 0;
+}
+
+/* -------------------------------------------------------------------- */
+/* 3. LOGIN PAGE STYLING (Split Screen Design)                        */
+/* -------------------------------------------------------------------- */
+
+/* Left Side: Branding Area with Gradient */
+.login-sidebar {
+    -fx-background-color: linear-gradient(to bottom right, #2E3440, #4C566A, #5E81AC); /* Nord Deep Gradient */
+}
+
+.brand-title {
+    -fx-font-size: 36px;
     -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 20 0 10 0;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 0, 2);
+}
+
+.brand-slogan {
+    -fx-font-size: 16px;
+    -fx-text-fill: #D8DEE9; /* Off-white text */
+    -fx-font-style: italic;
+}
+
+/* Right Side: Login Form */
+.login-heading {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2E3440;
+}
+
+.login-subheading {
+    -fx-font-size: 14px;
+    -fx-text-fill: #999;
+}
+
+.field-label {
     -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4C566A;
 }
 
+/* Modern Input Fields */
+.text-input, .choice-box {
+    -fx-pref-height: 45px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-background-color: #F0F4F8;
+    -fx-border-color: transparent;
+    -fx-padding: 0 15 0 15;
+}
 
-/* ==================================================================== */
-/* 5. TABLE VIEW & LIST VIEW (Clean Data Presentation)                */
-/* ==================================================================== */
-.table-view, .list-view {
-    -fx-background-color: #ffffff; /* White background for data container */
-    -fx-border-color: #e0e0e0;
-    -fx-border-radius: 12px;
+.text-input:focused, .choice-box:focused {
+    -fx-background-color: white;
+    -fx-border-color: #5E81AC; /* Blue border on focus */
+    -fx-effect: dropshadow(gaussian, rgba(94, 129, 172, 0.2), 5, 0, 0, 2);
+}
+
+/* Login Button */
+.login-btn {
+    -fx-background-color: #5E81AC; /* Nord Blue */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-pref-height: 45px;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(94, 129, 172, 0.4), 10, 0, 0, 4);
+    -fx-transition: all 0.3s;
+}
+
+.login-btn:hover {
+    -fx-background-color: #81A1C1; /* Lighter blue on hover */
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+/* -------------------------------------------------------------------- */
+/* 4. DASHBOARD COMPONENTS (Cards & Bubbles)                          */
+/* -------------------------------------------------------------------- */
+
+/* Routine Card Design */
+.routine-card {
+    -fx-background-color: -color-bg-default;
     -fx-background-radius: 12px;
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2); /* Very soft panel shadow */
+    -fx-border-color: -color-border-muted;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.05), 10, 0, 0, 2);
+    -fx-padding: 20px;
+    -fx-min-width: 250px;
+    -fx-max-width: 250px;
+    -fx-cursor: hand;
+    -fx-transition: -fx-translate-y 0.2s;
 }
 
-/* Table Header */
-.table-view .column-header-background {
-    -fx-background-color: #1565c0;
-    -fx-background-radius: 12px 12px 0 0; /* Rounded top corners */
+.routine-card:hover {
+    -fx-border-color: -color-accent-emphasis;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 15, 0, 0, 5);
+    -fx-translate-y: -3px; /* Subtle lift effect */
 }
 
-.table-view .column-header .label {
+.card-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-accent-emphasis;
+}
+
+.card-subtitle {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-fg-default;
+}
+
+.card-details {
+    -fx-font-size: 13px;
+    -fx-text-fill: -color-fg-muted;
+}
+
+/* Chat Bubble Design */
+.chat-container {
+    -fx-background-color: transparent;
+    -fx-padding: 10px;
+}
+
+.chat-bubble-me {
+    -fx-background-color: -color-accent-emphasis; /* My message (Blue) */
+    -fx-background-radius: 15px 15px 0 15px;
+    -fx-padding: 10px 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 3, 0, 0, 1);
+}
+
+.chat-text-me {
+    -fx-fill: -color-fg-emphasis; /* White text */
+    -fx-font-size: 14px;
+}
+
+.chat-bubble-other {
+    -fx-background-color: -color-bg-subtle; /* Others' message (Grey) */
+    -fx-background-radius: 15px 15px 15px 0;
+    -fx-padding: 10px 15px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 3, 0, 0, 1);
+}
+
+.chat-text-other {
+    -fx-fill: -color-fg-default; /* Dark text */
+    -fx-font-size: 14px;
+}
+
+.sender-name {
+    -fx-font-size: 11px;
+    -fx-text-fill: -color-fg-muted;
+    -fx-padding: 0 0 2 5;
+}
+
+/* Notice Board Card Design */
+.notice-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: -color-border-muted;
+    -fx-border-width: 1px;
+    -fx-padding: 15px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-spacing: 10px;
+}
+
+.notice-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-fg-default;
+}
+
+.notice-badge {
+    -fx-background-color: #8FBCBB; /* Teal Badge */
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 15px;
-}
-
-/* Table Rows */
-.table-row-cell:odd {
-    -fx-background-color: #f8f9fa; /* Off-white alternate row */
-}
-
-.table-row-cell:hover {
-    -fx-background-color: #e3f2fd; /* Light blue on hover for better interaction */
-}
-
-.table-row-cell:selected {
-    -fx-background-color: #a5c3e8; /* Solid selection color */
-    -fx-text-fill: #0d47a1;
-}
-
-/* ==================================================================== */
-/* 6. TAB PANE (Modern, Underlined Tab Look)                          */
-/* ==================================================================== */
-.tab-pane {
-    -fx-tab-min-width: 130px;
-}
-
-.tab-pane .tab-header-area {
-    -fx-background-color: transparent;
-    -fx-padding: 0 0 0 0;
-}
-
-.tab-pane .tab {
-    -fx-background-color: transparent; /* Tabs blend into background */
-    -fx-background-insets: 0;
-    -fx-padding: 10px 15px;
-}
-
-.tab-pane .tab-content {
-    -fx-background-color: white; /* Content area is white */
-    -fx-border-color: #e0e0e0;
-    -fx-border-width: 1px;
+    -fx-font-size: 11px;
+    -fx-padding: 2 8 2 8;
     -fx-background-radius: 12px;
-    -fx-border-radius: 12px;
-    -fx-padding: 15px;
 }
 
-.tab-pane .tab:selected {
-    -fx-border-color: transparent;
-    /* Selected tab gets a strong blue bottom border */
-    -fx-border-width: 0 0 3px 0;
-    -fx-border-insets: 0;
-    -fx-border-color: #1565c0;
+.notice-content {
+    -fx-font-size: 14px;
+    -fx-text-fill: -color-fg-muted;
+    -fx-wrap-text: true;
+}
+
+.notice-footer {
+    -fx-font-size: 12px;
+    -fx-text-fill: -color-fg-subtle;
+    -fx-alignment: CENTER_LEFT;
+}
+
+/* -------------------------------------------------------------------- */
+/* 5. CUSTOM SCROLLBARS (Modern & Slim)                               */
+/* -------------------------------------------------------------------- */
+
+.scroll-bar:vertical, .scroll-bar:horizontal {
     -fx-background-color: transparent;
 }
 
-.tab-pane .tab:selected .tab-label {
-    -fx-text-fill: #1565c0; /* Primary color for selected tab text */
-    -fx-font-weight: bold;
+.scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
+    -fx-background-color: #cfd8dc;
+    -fx-background-radius: 10px;
+    -fx-background-insets: 3;
+}
+
+.scroll-bar:vertical .thumb:hover, .scroll-bar:horizontal .thumb:hover {
+    -fx-background-color: #90a4ae;
+}
+
+.scroll-bar .track {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-background-radius: 0;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0;
 }
